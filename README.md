@@ -1,1 +1,1 @@
-"# Lucidia-Discord-Bot" 
+# Lucidia-Discord-Bot
