@@ -1,4 +1,3 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.11.17",
     "quick.db": "^7.1.3"
