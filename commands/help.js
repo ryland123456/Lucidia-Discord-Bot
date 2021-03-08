@@ -57,7 +57,7 @@ module.exports = {
             let page = 1
 
             let embed = new MessageEmbed()
-                .setAuthor(client.user.username+" Help", "https://media.discordapp.net/attachments/800112574996676608/809244378781843517/f919ef26086822f10a268bffedf6d4bf_2.png")
+                .setAuthor(client.user.username+" Help", "https://hydrostaticcog.org/assets/L.png")
                 .setColor("BLUE")
                 .setDescription(pages[page-1])
                 .setFooter(`Page ${page} of ${pages.length}`)
