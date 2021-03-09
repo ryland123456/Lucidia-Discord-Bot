@@ -12,9 +12,8 @@ module.exports = async (client) => {
     setInterval(() => {
         if(index === arrayOfStatus.length) index = 0;
         const status = arrayOfStatus[index];
-        client.user.setActivity(status, {
-            type: "STREAMING",
-            url: `https://www.twitch.tv/lucidialearning`,
+        client.user.setActivity('Ryland Appreciation Week!', {
+            type: "WATCHING"
         });
         index++;
     }, 20000)}
