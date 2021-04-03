@@ -12,8 +12,8 @@ module.exports = async (client) => {
     setInterval(() => {
         if(index === arrayOfStatus.length) index = 0;
         const status = arrayOfStatus[index];
-        client.user.setActivity('MARKETING SCAMS', {
-            type: "LISTENING"
+        client.user.setActivity('Ryland Appreciation Week!', {
+            type: "WATCHING"
         });
         index++;
     }, 20000)}
