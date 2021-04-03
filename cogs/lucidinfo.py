@@ -6,7 +6,7 @@ from discord.utils import get
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 
-class LucidInfo(Cog):
+class LucidiaInfo(Cog):
     @commands.command()
     async def faqs(self, ctx: MyContext):
         """
@@ -24,4 +24,11 @@ class LucidInfo(Cog):
         embed.add_field(name='What is Lucidia Learning?', value='Lucidia Learning is a group of teenagers trying to change learning around the world to make online learning as easy as possible', inline=False)
         await ctx.send(embed=embed)
 
-setup = LucidInfo.setup
+    @commands.command(aliases=['webpage', 'web'])
+    async def website(self, ctx: MyContext):
+        """
+        Returns the Lucidia Website Link
+        """
+        await ctx.send('The Lucidia Learning Website is available at https://lucidia.us!')
+
+setup = LucidiaInfo.setup

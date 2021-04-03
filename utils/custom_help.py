@@ -21,26 +21,22 @@ class EmbedHelpCommand(commands.HelpCommand):
         return 'Use {0}{1} [command] for more info on a command.'.format(self.clean_prefix, self.invoked_with)
 
     def get_command_signature(self, command):
-        return '{0.qualified_name} {0.signature}'.format(command)
+        return '{0}{1} {2}'.format(self.clean_prefix, command.qualified_name, command.signature)
 
     async def send_bot_help(self, mapping):
-        embed = discord.Embed(title='Bot Commands', colour=self.COLOUR)
-        description = self.context.bot.description
-        if description:
-            embed.description = description
-
+        embed = discord.Embed(title="Lucidia Bot Help", color=self.COLOUR)
+        if self.context.bot.description:
+            embed.description = self.context.bot.description
         for cog, commands in mapping.items():
-            name = 'No Category' if cog is None else cog.qualified_name
             filtered = await self.filter_commands(commands, sort=True)
-            if filtered:
-                value = '\u2002'.join(c.name for c in commands)
-                if cog and cog.description:
-                    value = '{0}\n{1}'.format(cog.description, value)
+            command_signatures = [f"{self.get_command_signature(c)} - {c.short_doc}" for c in filtered]
+            if command_signatures:
+                cog_name = getattr(cog, "qualified_name", "No Category")
+                embed.add_field(name=cog_name, value="\n".join(command_signatures), inline=False)
 
-                embed.add_field(name=name, value=value)
-
+        channel = self.get_destination()
         embed.set_footer(text=self.get_ending_note())
-        await self.get_destination().send(embed=embed)
+        await channel.send(embed=embed)
 
     async def send_cog_help(self, cog):
         embed = discord.Embed(title='{0.qualified_name} Commands'.format(cog), colour=self.COLOUR)

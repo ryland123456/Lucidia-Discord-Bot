@@ -11,6 +11,9 @@ from utils.cog_class import Cog
 class MathCog(Cog):
     @commands.group()
     async def math(self, ctx: MyContext):
+        """
+        Ask Lucidia math questions, and get answers! 
+        """
         if not ctx.invoked_subcommand:
             await ctx.send("Lucidia Math Command!\nSyntax: `+math <option> <number/equation>`")
 
@@ -34,13 +37,17 @@ class MathCog(Cog):
         """
         Solves an equation that you enter as an argument
         """
+        input = equation
+        Calembed = discord.Embed(title='Equation Results', color=0x8C52FF)
+        Calembed.add_field(name='Equation', value=input, inline=False)
+        Calembed.add_field(name='Solution', value='Calculating ... ', inline=False)
+        msg = await ctx.send(embed=Calembed)
         try:
-            input = equation
             result = eval(input)
             embed = discord.Embed(title='Equation Results', color=0x8C52FF)
             embed.add_field(name='Equation', value=input, inline=False)
             embed.add_field(name='Solution', value=str(result), inline=False)
-            await ctx.send(embed=embed)
+            await msg.edit(embed=embed)
         except ZeroDivisionError:
             await ctx.send("You can't divide 0 into 0!")
 
