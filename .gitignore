@@ -1,3 +1,6 @@
-json.sqlite
-.env
-node_modules/
+all.log
+errors.log
+utils/__pycache__
+cogs/__pycache__
+config.toml
+tests/
