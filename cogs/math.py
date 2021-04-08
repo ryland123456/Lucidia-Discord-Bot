@@ -15,7 +15,7 @@ class MathCog(Cog):
         Ask Lucidia math questions, and get answers! 
         """
         if not ctx.invoked_subcommand:
-            await ctx.send("Lucidia Math Command!\nSyntax: `+math <option> <number/equation>`")
+            await ctx.send_help('math')
 
     @math.command()
     async def sqrt(self, ctx: MyContext, *, number):
