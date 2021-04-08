@@ -66,7 +66,7 @@ class BackgroundLoop(Cog):
         if (statusChooser == 3):
             messages3 = [
                 "ryland exposing company secrets",
-                "sitemap.xml",
+                "sitemap",
                 "kraft mac-n-cheese",
                 "ltt",
                 "mysite",
