@@ -27,7 +27,7 @@ class VoteCog(Cog):
         """
         Vote for Lucidia on Top.gg (not yet..., but soon...)
         """
-        await ctx.send(f"Hey! Why don't you vote for {self.bot.user.name} on top.gg? You can do that at https://top.gg/bot/778756422275956766")
+        await ctx.send(f"Hey! Why don't you vote for {self.bot.user.name} on top.gg? You can do that at https://top.gg/bot/{self.bot.user.id}")
 
     @commands.Cog.listener()
     async def on_dbl_vote(self, data):
@@ -45,7 +45,7 @@ class VoteCog(Cog):
 
     async def vote_reminder(self, user: discord.User):
         await asyncio.sleep(86460)
-        remind_embed = discord.Embed(title='A Friendly Reminder to Vote!', description=f"Hey {user.display_name}! It's been 12 hours since you voted, and this is a reminder to do it again! You can vote at https://top.gg/bot/778756422275956766. Thanks!")
+        remind_embed = discord.Embed(title='A Friendly Reminder to Vote!', description=f"Hey {user.display_name}! It's been 12 hours since you voted, and this is a reminder to do it again! You can vote at https://top.gg/bot/{self.bot.user.id}. Thanks!")
         await user.send(embed=remind_embed)
         user_callback = self.user_callbacks.pop(user.id)
         if isinstance(user_callback, asyncio.Task):
