@@ -20,7 +20,7 @@ class SuggestionCog(Cog):
         """
         Suggest something for Lucidia!
         """
-        suggestionChannel = self.bot.get_channel(756310243046195330)
+        suggestionChannel = self.bot.get_channel(834551330294333491)
         await suggestionChannel.trigger_typing()
         staffRole: discord.Role = get(ctx.guild.roles, id=759004351116607520)
         staff_mention: str = staffRole.mention
@@ -46,7 +46,7 @@ class SuggestionCog(Cog):
         if payload.user_id == self.bot.user.id: return
         guild: discord.Guild = self.bot.get_guild(payload.guild_id)
         staffRole = get(guild.roles, id=759004351116607520)
-        if payload.emoji.name == "🛑" and payload.channel_id == 756310243046195330:
+        if payload.emoji.name == "🛑" and payload.channel_id == 834551330294333491:
             if payload.user_id in staff and payload.message_id in active_suggestions:
                 denied_suggestion = discord.Embed(title="Denied Suggestion!", description="This suggestion was denied by Lucidia Staff.", color=0x8C52FF)
                 denied_suggestion.add_field(name="Suggestion", value=active_suggestions[payload.message_id])
