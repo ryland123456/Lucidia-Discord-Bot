@@ -14,9 +14,9 @@ class BugReportsCog(Cog):
         """
         web = await BugMenu('Click :desktop: to report as a Website bug, or click :robot: to report as a Discord Bot bug').prompt(ctx)
         if web:
-            channel = await self.bot.fetch_channel(827968956789817404)
+            channel = await self.bot.fetch_channel(834554764620595220)
         if not web:
-            channel = await self.bot.fetch_channel(811376961045397504)
+            channel = await self.bot.fetch_channel(834551360925073448)
         embed = discord.Embed(title='Bug Report', color=0x8C52FF)
         embed.add_field(name='Reporter:', value=ctx.author.mention, inline=False)
         embed.add_field(name='Bug:', value=reporttext, inline=False)
