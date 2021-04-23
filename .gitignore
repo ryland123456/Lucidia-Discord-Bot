@@ -5,3 +5,5 @@ cogs/__pycache__
 config.toml
 tests/
 staff.json
+venv/
+/venv/
