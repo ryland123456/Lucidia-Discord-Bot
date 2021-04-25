@@ -154,4 +154,6 @@ class Moderation(Cog):
         except discord.Forbidden:
             await ctx.send('Permission Error. Check the bot\'s permissions.')
 
+
 setup = Moderation.setup
+
