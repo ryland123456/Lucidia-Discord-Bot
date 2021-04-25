@@ -65,4 +65,20 @@ class DatabaseCommands(Cog):
         else:
             await ctx.send(_("There is no specific language set for this guild."))
 
+    @settings.command()
+    async def logging(self, ctx: MyContext, id: Optional[int] = 0):
+        """
+        Change logging channel
+        """
+        db_guild = await get_from_db(ctx.guild)
+        if id:
+            db_guild.logChan = int(id)
+        await db_guild.save()
+
+        _ = await ctx.get_translate_function()
+        if db_guild.logChan:
+            await ctx.send(f"The logging channel is set to `{id}`.")
+        else:
+            await ctx.send(_("There is no specific logging channel set for this guild."))
+
 setup = DatabaseCommands.setup

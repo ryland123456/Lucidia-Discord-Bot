@@ -11,4 +11,4 @@ python-rapidjson
 ciso8601
 Babel
 discord.py-stubs
-dbl-py
+dblpy

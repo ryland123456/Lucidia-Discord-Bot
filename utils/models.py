@@ -16,6 +16,8 @@ class DiscordGuild(Model):
     discord_id = fields.BigIntField(index=True)
     name = fields.TextField()
     prefix = fields.CharField(20, null=True)
+    caseNum = fields.IntField(default=1)
+    logChan = fields.BigIntField(index=True, default=0)
 
     language = fields.CharField(6, default="en")
 
