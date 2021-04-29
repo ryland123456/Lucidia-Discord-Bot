@@ -4,7 +4,6 @@ import sys
 import time
 
 from discord.ext import commands
-from discord.utils import get
 
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
@@ -12,6 +11,7 @@ from utils.ctx_class import MyContext
 with open('release.json') as f:
     data = json.load(f)
     release = data['lbVersion']
+
 
 class Utilities(Cog):
     @commands.command()

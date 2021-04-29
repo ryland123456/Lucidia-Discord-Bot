@@ -22,20 +22,20 @@ async def mute(ctx: MyContext, user: discord.User, reason=None):
         await user.add_roles(role)
         await ctx.send(f'{user.mention} has been muted by {ctx.author.mention} for {reason}')
 
-async def dmMessage1(ctx: MyContext, user: discord.User, reason, type, moderator, caseNum):
-    embed = discord.Embed(title=f'You have been {type} from {ctx.guild.name}!', description=f'You violated one of our rules, so you have been punished. You can appeal this ban at https://lucidialearning.com/appeals', color=0x8C52FF)
+async def dmmessage1(ctx: MyContext, user: discord.User, reason, disciplinetype, moderator, casenum):
+    embed = discord.Embed(title=f'You have been {disciplinetype} from {ctx.guild.name}!', description=f'You violated one of our rules, so you have been punished. You can appeal this ban at https://lucidialearning.com/appeals', color=0x8C52FF)
     embed.add_field(name='Reason', value=reason, inline=False)
-    embed.add_field(name='Case Number', value=caseNum, inline=False)
+    embed.add_field(name='Case Number', value=casenum, inline=False)
     embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
     await user.send(embed=embed)
 
-async def logger(ctx: MyContext, user: discord.user, reason, type, moderator, caseNum):
+async def logger(ctx: MyContext, user: discord.user, reason, disciplinetype, moderator, casenum):
     db_guild = await get_from_db(ctx.guild)
     channel = discord.utils.get(ctx.guild.channels, id=db_guild.logChan)
-    embed = discord.Embed(title=f'Disciplinary Action: {type}', color=0x8C52FF)
+    embed = discord.Embed(title=f'Disciplinary Action: {disciplinetype}', color=0x8C52FF)
     embed.add_field(name='Victim', value=user, inline=False)
     embed.add_field(name='Reason', value=reason, inline=False)
-    embed.add_field(name='Case Number', value=caseNum, inline=False)
+    embed.add_field(name='Case Number', value=casenum, inline=False)
     embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
     await channel.send(embed=embed)
     
@@ -56,7 +56,7 @@ class Moderation(Cog):
 
         try:
             db_guild = await get_from_db(ctx.guild)
-            await dmMessage1(ctx, user, reason, "banned", ctx.author, db_guild.caseNum)
+            await dmmessage1(ctx, user, reason, "banned", ctx.author, db_guild.caseNum)
             await logger(ctx, user, reason, "Ban", ctx.author, db_guild.caseNum)
             db_guild.caseNum = db_guild.caseNum + 1
             await db_guild.save()
@@ -79,7 +79,7 @@ class Moderation(Cog):
 
         try:
             db_guild = await get_from_db(ctx.guild)
-            await dmMessage1(ctx, user, reason, "banned", ctx.author, db_guild.caseNum)
+            await dmmessage1(ctx, user, reason, "banned", ctx.author, db_guild.caseNum)
             await logger(ctx, user, reason, "Ban", ctx.author, db_guild.caseNum)
             db_guild.caseNum = db_guild.caseNum + 1
             await db_guild.save()
@@ -102,7 +102,7 @@ class Moderation(Cog):
             reason = 'no reason specified'
 
         db_guild = await get_from_db(ctx.guild)
-        await dmMessage1(ctx, user, reason, "muted", ctx.author, db_guild.caseNum)
+        await dmmessage1(ctx, user, reason, "muted", ctx.author, db_guild.caseNum)
         await logger(ctx, user, reason, "Ban", ctx.author, db_guild.caseNum)
         db_guild.caseNum = db_guild.caseNum + 1
         await db_guild.save()
@@ -145,7 +145,7 @@ class Moderation(Cog):
 
         try:
             db_guild = await get_from_db(ctx.guild)
-            await dmMessage1(ctx, user, reason, "kicked", ctx.author, db_guild.caseNum)
+            await dmmessage1(ctx, user, reason, "kicked", ctx.author, db_guild.caseNum)
             await logger(ctx, user, reason, "Ban", ctx.author, db_guild.caseNum)
             db_guild.caseNum = db_guild.caseNum + 1
             await db_guild.save()

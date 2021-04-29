@@ -6,6 +6,7 @@ from discord.utils import get
 from utils.cog_class import Cog
 from utils.ctx_class import MyContext
 
+
 class LucidiaInfo(Cog):
     @commands.command()
     async def faqs(self, ctx: MyContext):
@@ -30,5 +31,6 @@ class LucidiaInfo(Cog):
         Returns the Lucidia Website Link
         """
         await ctx.send('The Lucidia Learning Website is available at https://lucidia.us!')
+
 
 setup = LucidiaInfo.setup
