@@ -22,7 +22,7 @@ class Utilities(Cog):
         verEmbed = discord.Embed(title="Lucidia Version Info", description='', color=0x8C52FF)
         verEmbed.add_field(name='Version', value=data['lbVersion'], inline='true')
         verEmbed.add_field(name='Release Date', value=data['releaseDate'], inline='true')
-        verEmbed.add_field(name='Have Issues?', value='Let us know at our GitHub page!\n https://github.com/LucidiaLearning/Lucidia-Discord-Bot', inline='false')
+        verEmbed.add_field(name='Have Issues?', value='Let us know at our GitHub page!\n https://git.lucidia.us/LucidiaLearning/Lucidia-Discord-Bot', inline='false')
         verEmbed.add_field(name='System Info', value=f'Running Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro} on {sys.platform}', inline='true')
         await ctx.send(embed=verEmbed)
 
