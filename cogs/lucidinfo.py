@@ -13,7 +13,7 @@ class LucidiaInfo(Cog):
         """
         Returns the Lucidia Frequently Asked Questions
         """
-        embed = discord.Embed(title='Lucidia FAQs', color=0x8C52FF)
+        embed = discord.Embed(title='Lucidia FAQs', color=self.bot.color)
         embed.add_field(name='How do I switch languages?', value='Lucidia supports many languages! You can find a complete list, and change your lingual preference at https://www.lucidia.us/multilingual.', inline=False)
         embed.add_field(name='What is the link to yor website?', value='Our website is available at https://www.lucidia.us/.', inline=False)
         embed.add_field(name='How do I visit your blog?', value='We post articles, and updates on our blog at https://www.lucidia.us/blog.', inline=False)

@@ -26,7 +26,7 @@ class BackgroundLoop(Cog):
     @tasks.loop(seconds=30)
     async def presence(self):
         statusChooser = random.randint(1, 3)
-        if (statusChooser == 1):
+        if statusChooser == 1:
             messages1 = [
                 "wix.js",
                 "discord.py",
@@ -45,7 +45,7 @@ class BackgroundLoop(Cog):
             randInt1 = random.randint(0, int(messageCount1) - 1)
             status1 = messages1[randInt1]
             await self.bot.change_presence(activity=discord.Game(name=str(status1)))
-        if (statusChooser == 2):
+        if statusChooser == 2:
             messages2 = [
                 "ryland ranting",
                 "ryland saying his passwords outloud in vc",
@@ -63,7 +63,7 @@ class BackgroundLoop(Cog):
             randInt2 = random.randint(0, int(messageCount2) - 1)
             status2 = messages2[randInt2]
             await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=str(status2)))
-        if (statusChooser == 3):
+        if statusChooser == 3:
             messages3 = [
                 "ryland exposing company secrets",
                 "sitemap",

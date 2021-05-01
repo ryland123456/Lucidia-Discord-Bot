@@ -17,7 +17,7 @@ class BugReportsCog(Cog):
             channel = await self.bot.fetch_channel(834554764620595220)
         if not web:
             channel = await self.bot.fetch_channel(834551360925073448)
-        embed = discord.Embed(title='Bug Report', color=0x8C52FF)
+        embed = discord.Embed(title='Bug Report', color=self.color)
         embed.add_field(name='Reporter:', value=ctx.author.mention, inline=False)
         embed.add_field(name='Bug:', value=reporttext, inline=False)
         timestamp = datetime.now()

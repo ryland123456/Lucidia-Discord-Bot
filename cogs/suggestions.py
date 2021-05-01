@@ -24,7 +24,7 @@ class SuggestionCog(Cog):
         await suggestionChannel.trigger_typing()
         staffRole: discord.Role = get(ctx.guild.roles, id=759004351116607520)
         staff_mention: str = staffRole.mention
-        embed = discord.Embed(title='Suggestion', color=0x8C52FF)
+        embed = discord.Embed(title='Suggestion', color=self.bot.color)
         embed.add_field(name='Suggestor:', value=ctx.author.mention, inline=False)
         embed.add_field(name='Suggestion:', value=suggestion, inline=False)
         embed.add_field(name='Voting:', value=f'React with :white_check_mark: to vote for the suggestion\nReact with :x: to vote against this suggestion\n{staff_mention} can deny a suggestion with :octagonal_sign:', inline=False)
@@ -48,7 +48,7 @@ class SuggestionCog(Cog):
         staffRole = get(guild.roles, id=759004351116607520)
         if payload.emoji.name == "🛑" and payload.channel_id == 834551330294333491:
             if payload.user_id in staff and payload.message_id in active_suggestions:
-                denied_suggestion = discord.Embed(title="Denied Suggestion!", description="This suggestion was denied by Lucidia Staff.", color=0x8C52FF)
+                denied_suggestion = discord.Embed(title="Denied Suggestion!", description="This suggestion was denied by Lucidia Staff.", color=self.bot.color)
                 denied_suggestion.add_field(name="Suggestion", value=active_suggestions[payload.message_id])
                 channel: discord.TextChannel = self.bot.get_channel(payload.channel_id)
                 msg: discord.Message = await channel.fetch_message(payload.message_id)

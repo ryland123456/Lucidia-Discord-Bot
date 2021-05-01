@@ -23,7 +23,7 @@ async def mute(ctx: MyContext, user: discord.User, reason=None):
         await ctx.send(f'{user.mention} has been muted by {ctx.author.mention} for {reason}')
 
 async def dmmessage1(ctx: MyContext, user: discord.User, reason, disciplinetype, moderator, casenum):
-    embed = discord.Embed(title=f'You have been {disciplinetype} from {ctx.guild.name}!', description=f'You violated one of our rules, so you have been punished. You can appeal this ban at https://lucidialearning.com/appeals', color=0x8C52FF)
+    embed = discord.Embed(title=f'You have been {disciplinetype} from {ctx.guild.name}!', description=f'You violated one of our rules, so you have been punished. You can appeal this ban at https://lucidialearning.com/appeals', color=self.bot.color)
     embed.add_field(name='Reason', value=reason, inline=False)
     embed.add_field(name='Case Number', value=casenum, inline=False)
     embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
@@ -32,7 +32,7 @@ async def dmmessage1(ctx: MyContext, user: discord.User, reason, disciplinetype,
 async def logger(ctx: MyContext, user: discord.user, reason, disciplinetype, moderator, casenum):
     db_guild = await get_from_db(ctx.guild)
     channel = discord.utils.get(ctx.guild.channels, id=db_guild.logChan)
-    embed = discord.Embed(title=f'Disciplinary Action: {disciplinetype}', color=0x8C52FF)
+    embed = discord.Embed(title=f'Disciplinary Action: {disciplinetype}', color=self.bot.color)
     embed.add_field(name='Victim', value=user, inline=False)
     embed.add_field(name='Reason', value=reason, inline=False)
     embed.add_field(name='Case Number', value=casenum, inline=False)

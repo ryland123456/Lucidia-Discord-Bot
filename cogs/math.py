@@ -23,10 +23,10 @@ class MathCog(Cog):
         Returns the square root of a number you specify
         """
         try:
-            input = int(number)
-            result = math.sqrt(input)
-            embed = discord.Embed(title='Equation Results', color=0x8C52FF)
-            embed.add_field(name='Equation', value=f'Square Root of {input}', inline=False)
+            input1 = int(number)
+            result = math.sqrt(input1)
+            embed = discord.Embed(title='Equation Results', color=self.bot.color)
+            embed.add_field(name='Equation', value=f'Square Root of {input1}', inline=False)
             embed.add_field(name='Solution', value=str(result), inline=False)
             await ctx.send(embed=embed)
         except ValueError as e:
@@ -37,15 +37,15 @@ class MathCog(Cog):
         """
         Solves an equation that you enter as an argument
         """
-        input = equation
-        Calembed = discord.Embed(title='Equation Results', color=0x8C52FF)
-        Calembed.add_field(name='Equation', value=input, inline=False)
+        input1 = equation
+        Calembed = discord.Embed(title='Equation Results', color=self.bot.color)
+        Calembed.add_field(name='Equation', value=input1, inline=False)
         Calembed.add_field(name='Solution', value='Calculating ... ', inline=False)
         msg = await ctx.send(embed=Calembed)
         try:
-            result = eval(input)
-            embed = discord.Embed(title='Equation Results', color=0x8C52FF)
-            embed.add_field(name='Equation', value=input, inline=False)
+            result = eval(input1)
+            embed = discord.Embed(title='Equation Results', color=self.bot.color)
+            embed.add_field(name='Equation', value=input1, inline=False)
             embed.add_field(name='Solution', value=str(result), inline=False)
             await msg.edit(embed=embed)
         except ZeroDivisionError:
@@ -56,7 +56,7 @@ class MathCog(Cog):
         """
         Returns the number Pi
         """
-        embed = discord.Embed(title='Equation Results', color=0x8C52FF)
+        embed = discord.Embed(title='Equation Results', color=self.bot.color)
         embed.add_field(name='Equation', value='pi', inline=False)
         embed.add_field(name='Solution', value=str(math.pi), inline=False)
         await ctx.send(embed=embed)

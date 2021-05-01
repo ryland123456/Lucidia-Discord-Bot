@@ -44,7 +44,7 @@ class VoteCog(Cog):
         await user.send(f"Hey {user.mention}!\n\nThanks for voting for {self.bot.user.name}! I will remind you in 12 hours to vote for me again! (This is a test)")
 
     async def vote_reminder(self, user: discord.User):
-        await asyncio.sleep(86460)
+        await asyncio.sleep(43230)
         remind_embed = discord.Embed(title='A Friendly Reminder to Vote!', description=f"Hey {user.display_name}! It's been 12 hours since you voted, and this is a reminder to do it again! You can vote at https://top.gg/bot/{self.bot.user.id}. Thanks!")
         await user.send(embed=remind_embed)
         user_callback = self.user_callbacks.pop(user.id)
