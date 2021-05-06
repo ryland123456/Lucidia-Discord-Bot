@@ -49,7 +49,6 @@ class BackgroundLoop(Cog):
             messages2 = [
                 "ryland ranting",
                 "ryland saying his passwords outloud in vc",
-                "ghostedbot",
                 "static",
                 "whitenoise",
                 "asmr",
