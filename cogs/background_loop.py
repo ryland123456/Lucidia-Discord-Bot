@@ -40,7 +40,8 @@ class BackgroundLoop(Cog):
                 "Bot Rev. 2",
                 "with your expensive toys",
                 "cards",
-                "with duck tape"
+                "with duck tape",
+                "New website :eyes:"
             ]
             messageCount1 = len(messages1)
             randInt1 = random.randint(0, int(messageCount1) - 1)
