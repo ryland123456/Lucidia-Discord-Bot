@@ -29,6 +29,7 @@ class BackgroundLoop(Cog):
         if statusChooser == 1:
             messages1 = [
                 "wix.js",
+                "Weblium",
                 "discord.py",
                 "headaches",
                 "the aeneid game",
