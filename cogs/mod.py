@@ -7,40 +7,43 @@ from utils.ctx_class import MyContext
 from utils.models import get_from_db
 
 
+async def mute(ctx: MyContext, user: discord.User, reason=None):
+    role = discord.utils.get(ctx.guild.roles, name='Muted')
+    if not role:
+        try:
+            muted = await ctx.guild.create_role(name='Muted')
+            for channel in ctx.guild.channels:
+                await channel.set_permissions(muted, send_messages=False)
+        except discord.Forbidden:
+            return await ctx.send('Permissions Error. Check the bot\'s permissions')
+        await user.add_roles(muted)
+        await ctx.send(f'{user.mention} has been muted by {ctx.author.mention} for {reason}')
+    else:
+        await user.add_roles(role)
+        await ctx.send(f'{user.mention} has been muted by {ctx.author.mention} for {reason}')
+
+
+async def dmmessage1(ctx: MyContext, user: discord.User, reason, disciplinetype, moderator, casenum):
+    embed = discord.Embed(title=f'You have been {disciplinetype} from {ctx.guild.name}!',
+                          description=f'You violated one of our rules, so you have been punished. You can appeal this ban at https://lucidialearning.com/appeals',
+                          color=self.bot.color)
+    embed.add_field(name='Reason', value=reason, inline=False)
+    embed.add_field(name='Case Number', value=casenum, inline=False)
+    embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
+    await user.send(embed=embed)
+
+
+async def logger(ctx: MyContext, user: discord.user, reason, disciplinetype, moderator, casenum):
+    db_guild = await get_from_db(ctx.guild)
+    channel = discord.utils.get(ctx.guild.channels, id=db_guild.logChan)
+    embed = discord.Embed(title=f'Disciplinary Action: {disciplinetype}', color=0x8C52FF)
+    embed.add_field(name='Victim', value=user, inline=False)
+    embed.add_field(name='Reason', value=reason, inline=False)
+    embed.add_field(name='Case Number', value=casenum, inline=False)
+    embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
+    await channel.send(embed=embed)
+
 class Moderation(Cog):
-    async def mute(self, ctx: MyContext, user: discord.User, reason=None):
-        role = discord.utils.get(ctx.guild.roles, name='Muted')
-        if not role:
-            try:
-                muted = await ctx.guild.create_role(name='Muted')
-                for channel in ctx.guild.channels:
-                    await channel.set_permissions(muted, send_messages=False)
-            except discord.Forbidden:
-                return await ctx.send('Permissions Error. Check the bot\'s permissions')
-            await user.add_roles(muted)
-            await ctx.send(f'{user.mention} has been muted by {ctx.author.mention} for {reason}')
-        else:
-            await user.add_roles(role)
-            await ctx.send(f'{user.mention} has been muted by {ctx.author.mention} for {reason}')
-
-    async def dmmessage1(self, ctx: MyContext, user: discord.User, reason, disciplinetype, moderator, casenum):
-        embed = discord.Embed(title=f'You have been {disciplinetype} from {ctx.guild.name}!',
-                              description=f'You violated one of our rules, so you have been punished. You can appeal this ban at https://lucidialearning.com/appeals',
-                              color=self.bot.color)
-        embed.add_field(name='Reason', value=reason, inline=False)
-        embed.add_field(name='Case Number', value=casenum, inline=False)
-        embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
-        await user.send(embed=embed)
-
-    async def logger(self, ctx: MyContext, user: discord.user, reason, disciplinetype, moderator, casenum):
-        db_guild = await get_from_db(ctx.guild)
-        channel = discord.utils.get(ctx.guild.channels, id=db_guild.logChan)
-        embed = discord.Embed(title=f'Disciplinary Action: {disciplinetype}', color=self.bot.color)
-        embed.add_field(name='Victim', value=user, inline=False)
-        embed.add_field(name='Reason', value=reason, inline=False)
-        embed.add_field(name='Case Number', value=casenum, inline=False)
-        embed.add_field(name='Responsible Moderator', value=moderator, inline=False)
-        await channel.send(embed=embed)
 
     @commands.has_permissions(ban_members=True)
     @commands.command()
