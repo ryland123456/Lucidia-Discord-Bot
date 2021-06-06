@@ -149,7 +149,7 @@ class Moderation(Cog):
         try:
             db_guild = await get_from_db(ctx.guild)
             await dmmessage1(ctx, user, reason, "kicked", ctx.author, db_guild.caseNum)
-            await logger(ctx, user, reason, "Ban", ctx.author, db_guild.caseNum)
+            await logger(ctx, user, reason, "Kick", ctx.author, db_guild.caseNum)
             db_guild.caseNum = db_guild.caseNum + 1
             await db_guild.save()
             await ctx.guild.kick(user, reason=reason)
