@@ -29,7 +29,6 @@ class BackgroundLoop(Cog):
         if statusChooser == 1:
             messages1 = [
                 "wix.js",
-                "Weblium",
                 "discord.py",
                 "headaches",
                 "the aeneid game",
@@ -41,7 +40,9 @@ class BackgroundLoop(Cog):
                 "with your expensive toys",
                 "cards",
                 "with duck tape",
-                "New website :eyes:"
+                "New website :eyes:",
+                "New Logo :eyes:",
+                "Green is the new purple",
             ]
             messageCount1 = len(messages1)
             randInt1 = random.randint(0, int(messageCount1) - 1)
@@ -58,7 +59,8 @@ class BackgroundLoop(Cog):
                 "hydro ranting",
                 "hydro talking to himself",
                 "ryland ranting about track (again)",
-                ":uwu:"
+                ":uwu:",
+                "dsc.gg/lucidia"
             ]
             messageCount2 = len(messages2)
             randInt2 = random.randint(0, int(messageCount2) - 1)
@@ -74,12 +76,14 @@ class BackgroundLoop(Cog):
                 "covid bot ?",
                 "hydro doxxing himself",
                 "curling",
-                "thomas and friends"
+                "thomas and friends",
+                "dOGbone's minecraft streams"
             ]
             messageCount3 = len(messages3)
             randInt3 = random.randint(0, int(messageCount3) - 1)
             status3 = messages3[randInt3]
-            await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=str(status3)))
+            await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=str(status3))
+
 
     @presence.before_loop
     async def before(self):
