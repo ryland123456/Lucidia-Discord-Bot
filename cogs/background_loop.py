@@ -82,7 +82,7 @@ class BackgroundLoop(Cog):
             messageCount3 = len(messages3)
             randInt3 = random.randint(0, int(messageCount3) - 1)
             status3 = messages3[randInt3]
-            await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=str(status3))
+            await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=str(status3)))
 
 
     @presence.before_loop
