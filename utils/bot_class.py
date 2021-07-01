@@ -23,7 +23,7 @@ class MyBot(AutoShardedBot):
         super().__init__(*args, command_prefix=get_prefix, activity=activity, case_insensitive=self.config["bot"]["commands_are_case_insensitive"], **kwargs)
         self.commands_used = collections.Counter()
         self.uptime = datetime.datetime.utcnow()
-        self.color = 0x8C52FF
+        self.color = 0x6CE490
         self.shards_ready = set()
         self._client_session: Optional[aiohttp.ClientSession] = None
         asyncio.ensure_future(self.async_setup())
